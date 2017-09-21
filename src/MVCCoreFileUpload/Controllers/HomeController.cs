@@ -25,17 +25,19 @@ namespace MVCCoreFileUpload.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(ICollection<IFormFile> files)
         {
-            var uploads = Path.Combine(_environment.WebRootPath, "uploads");
-            foreach (var file in files)
-            {
-                if (file.Length > 0)
+            // Create folder if it doesn't exist
+            Directory.CreateDirectory(Path.Combine(_environment.WebRootPath, "02-RG-17"));
+            var uploads = Path.Combine(_environment.WebRootPath, "02-RG-17");
+                foreach (var file in files)
                 {
-                    using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
+                    if (file.Length > 0)
                     {
-                        await file.CopyToAsync(fileStream);
+                        using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
+                        {
+                            await file.CopyToAsync(fileStream);
+                        }
                     }
                 }
-            }
             return View();
         }
 

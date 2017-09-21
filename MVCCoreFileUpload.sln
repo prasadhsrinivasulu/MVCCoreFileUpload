@@ -1,16 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5A9DB42A-D8D8-49AC-8D16-63FCC53295DC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7E14406B-A0FC-4DFF-9066-946FEE1FF33A}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MVCCoreFileUpload", "src\MVCCoreFileUpload\MVCCoreFileUpload.xproj", "{F3437F43-F0BC-42BA-B912-2230843CF2B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCCoreFileUpload", "src\MVCCoreFileUpload\MVCCoreFileUpload.csproj", "{F3437F43-F0BC-42BA-B912-2230843CF2B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,5 +25,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F3437F43-F0BC-42BA-B912-2230843CF2B1} = {5A9DB42A-D8D8-49AC-8D16-63FCC53295DC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {14342238-210A-41DD-ADCF-BBA626AD3CD7}
 	EndGlobalSection
 EndGlobal
