@@ -7,6 +7,7 @@ trigger:
 - master
 
 pool:
+  name: 'ps-bb'
   vmImage: 'windows-latest'
 
 variables:
@@ -47,3 +48,14 @@ steps:
     scaDebug: false
     runFortifyScan: true
     fortifyScanType: 'LocalScan'
+
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Write your commands here
+          
+          echo Hello world
+          
+          dir c:\
+          
+          sourceanalyzer
