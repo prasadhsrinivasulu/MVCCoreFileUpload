@@ -21,6 +21,16 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo Write your commands here
+      
+      echo Hello world
+      
+      dir
+      sourceanalyzer
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
@@ -34,13 +44,3 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-
-- task: CmdLine@2
-  inputs:
-    script: |
-      echo Write your commands here
-      
-      echo Hello world
-      
-      dir
-      sourceanalyzer
