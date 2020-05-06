@@ -10,6 +10,45 @@ pool:
   name: 'Default'
   vmImage: 'windows-latest'
 
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+
+- task: FortifySCA@5
+  inputs:
+    licenseFile: 'D:\InBoundFTP\MFTBDDNTUSE\Fortify_SCA_and_Apps_17.20\fortify.license'
+    runBuildTranslate: true
+    applicationType: 'dotnet'
+    fortifyProjects: '**\*.sln'
+    fortifyBuildId: '12'
+    runFortifyRulepackUpdate: false
+    runFortifyClean: true
+    scaVerbose: false
+    scaDebug: false
+    runFortifyScan: true
+    fortifyScanType: 'LocalScan'
+
 - task: CmdLine@2
   inputs:
     script: |
