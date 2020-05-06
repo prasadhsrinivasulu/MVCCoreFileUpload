@@ -10,6 +10,16 @@ pool:
   name: 'Default'
   vmImage: 'windows-latest'
 
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo Write your commands here
+      
+      echo Hello world
+      
+      dir
+      sourceanalyzer
+
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
@@ -23,15 +33,7 @@ steps:
     restoreSolution: '$(solution)'
 
 
-- task: CmdLine@2
-  inputs:
-    script: |
-      echo Write your commands here
-      
-      echo Hello world
-      
-      dir
-      sourceanalyzer
+
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
